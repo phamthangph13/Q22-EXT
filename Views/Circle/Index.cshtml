@@ -1,0 +1,44 @@
+@{
+    ViewData["Title"] = "Tính toán hình tròn";
+}
+
+<link rel="stylesheet" href="~/css/circle.css" />
+
+<div class="calculator-container">
+    <h2 class="calculator-title">Tính toán hình tròn</h2>
+    
+    <form method="post" action="/Circle/Calculate">
+        <div class="form-group">
+            <label for="radius">Nhập bán kính:</label>
+            <input type="number" class="form-control" id="radius" name="radius" step="any" required 
+                   placeholder="Nhập bán kính hình tròn...">
+        </div>
+        <button type="submit" class="btn btn-calculate">Tính toán</button>
+    </form>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">
+            <i class="fas fa-exclamation-circle"></i>
+            @ViewBag.Error
+        </div>
+    }
+
+    @if (ViewBag.HasResult == true)
+    {
+        <div class="alert alert-success">
+            <div class="result-item">
+                <span class="result-label">Diện tích:</span>
+                <span class="result-value">@ViewBag.DienTich</span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">Chu vi:</span>
+                <span class="result-value">@ViewBag.ChuVi</span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">Đường kính:</span>
+                <span class="result-value">@ViewBag.DuongKinh</span>
+            </div>
+        </div>
+    }
+</div> 
